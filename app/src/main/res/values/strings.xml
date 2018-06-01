@@ -7,6 +7,13 @@
     <string name="previous_button">Prev</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+    <string name="Score0_toast">Score 0%</string>
+    <string name="Score1_toast">Score 16.6%</string>
+    <string name="Score2_toast">Score 33.3%</string>
+    <string name="Score3_toast">Score 50%</string>
+    <string name="Score4_toast">Score 66.6%</string>
+    <string name="Score5_toast">Score 83.3%</string>
+    <string name="Score6_toast">Score 100%</string>
     <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
     <string name="question_mideast">The Suez Canal connects the Red Sea and the Indian Ocean.</string>
     <string name="question_africa">The source of the Nile River is in Egypt.</string>
