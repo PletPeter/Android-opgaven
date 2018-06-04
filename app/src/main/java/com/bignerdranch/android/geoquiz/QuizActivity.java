@@ -17,7 +17,6 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private TextView mQuestionTextView;
     private int score = 0;
-    private double percentage = 0;
     private int answerCounter = 0;
 
     private static final String TAG = "QuizActivity";
