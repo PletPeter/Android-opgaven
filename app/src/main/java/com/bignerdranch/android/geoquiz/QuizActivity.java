@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mPreviousButton;
     private TextView mQuestionTextView;
+
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_australia, true),
@@ -98,8 +100,10 @@ public class QuizActivity extends AppCompatActivity {
 
         if (userPressedTrue == answerIsTrue){
             messageResId= R.string.correct_toast;
+            makeIntent("Goed");
         } else {
             messageResId = R.string.incorrect_toast;
+            makeIntent("Fout");
         }
         makeToast(messageResId);
     }
@@ -110,5 +114,10 @@ public class QuizActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 120);
         toast.show();
+    }
+
+    private void makeIntent(String result){
+        Intent intent = Answer.newIntent(QuizActivity.this, result);
+        startActivity(intent);
     }
 }
