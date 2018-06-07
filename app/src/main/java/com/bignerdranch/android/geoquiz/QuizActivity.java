@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mCheatButton;
     private TextView mQuestionTextView;
     private int score = 0;
     private int answerCounter = 0;
@@ -76,6 +78,15 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        mCheatButton = findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mQuestionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,19 +102,16 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     public void onStart() {
-        super.onStart();
         Log.d(TAG, "onStart() called");
     }
 
     @Override
     public void onResume() {
-        super.onStart();
         Log.d(TAG, "onResume() called");
     }
 
     @Override
     public void onPause() {
-        super.onStart();
         Log.d(TAG, "onPause() called");
     }
 
@@ -116,7 +124,6 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     public void onStop() {
-        super.onStart();
         Log.d(TAG, "onStop() called");
     }
 
