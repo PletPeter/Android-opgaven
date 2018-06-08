@@ -19,14 +19,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
 
 
-    private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.question_australia, true),
-            new Question(R.string.question_oceans, true),
-            new Question(R.string.question_mideast, false),
-            new Question(R.string.question_africa, false),
-            new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true),
-    };
+    private QuizModel model = new QuizModel();
 
     private int mCurrentIndex = 0;
 
@@ -42,14 +35,28 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                checkAnswer(true);
+                if(model.checkAnswer(true)){
+                    makeToast(R.string.correct_toast);
+                    makeIntent("Goed");
+                }
+                else {
+                    makeToast(R.string.incorrect_toast);
+                    makeIntent("Fout");
+                }
             }
         });
         mFalseButton = findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                checkAnswer(false);
+                if(model.checkAnswer(false)){
+                    makeToast(R.string.correct_toast);
+                    makeIntent("Goed");
+                }
+                else {
+                    makeToast(R.string.incorrect_toast);
+                    makeIntent("Fout");
+                }
             }
         });
 
@@ -57,7 +64,7 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                model.nextQuestion();
                 updateQuestion();
             }
         });
@@ -71,7 +78,7 @@ public class QuizActivity extends AppCompatActivity {
                     updateQuestion();
                 }
                 else{
-                    mCurrentIndex = mQuestionBank.length - 1;
+                    model.previousQuestion();
                     updateQuestion();
                 }
             }
@@ -80,7 +87,7 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                model.nextQuestion();
                 updateQuestion();
             }
         });
@@ -89,23 +96,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        int question = mQuestionBank[mCurrentIndex].getTextResId();
+        int question = model.getCurrentQuestion();
         mQuestionTextView.setText(question);
-    }
-
-    private void checkAnswer(boolean userPressedTrue){
-        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
-
-        int messageResId = 0;
-
-        if (userPressedTrue == answerIsTrue){
-            messageResId= R.string.correct_toast;
-            makeIntent("Goed");
-        } else {
-            messageResId = R.string.incorrect_toast;
-            makeIntent("Fout");
-        }
-        makeToast(messageResId);
     }
 
     private void makeToast(int text) {
