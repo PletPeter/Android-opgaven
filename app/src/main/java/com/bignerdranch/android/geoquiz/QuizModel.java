@@ -26,8 +26,8 @@ public class QuizModel {
         return messageResId;
     }
 
-    public int getCurrentQuestion() {
-        return mQuestionBank[mCurrentIndex].getTextResId();
+    public Question getCurrentQuestion() {
+        return mQuestionBank[mCurrentIndex];
     }
 
     public void nextQuestion() {

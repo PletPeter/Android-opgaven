@@ -96,8 +96,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        int question = model.getCurrentQuestion();
-        mQuestionTextView.setText(question);
+        Question question = model.getCurrentQuestion();
+        mQuestionTextView.setText(question.getTextResId());
     }
 
     private void makeToast(int text) {
