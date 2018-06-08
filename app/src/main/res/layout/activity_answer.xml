@@ -4,12 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Answer">
+    android:orientation="vertical"
+    tools:context=".Answer"
+    android:gravity="center">
 
     <TextView
+        android:id="@+id/result_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="goed_of_fout"
-        android:id="@+id/result_text_view"/>
+        android:padding="24dp"
+        tools:text="goed_of_fout" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="145dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/back_button" />
+    </LinearLayout>
 
 </LinearLayout>

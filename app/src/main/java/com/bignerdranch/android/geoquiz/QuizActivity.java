@@ -21,8 +21,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private QuizModel model = new QuizModel();
 
-    private int mCurrentIndex = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +71,8 @@ public class QuizActivity extends AppCompatActivity {
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mCurrentIndex>0) {
-                    mCurrentIndex = (mCurrentIndex - 1);
-                    updateQuestion();
-                }
-                else{
                     model.previousQuestion();
                     updateQuestion();
-                }
             }
         });
 
